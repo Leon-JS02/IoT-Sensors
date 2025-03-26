@@ -16,4 +16,8 @@ class Reader:
         reading_url = f"{self.base_url}reading"
         for sensor in self.sensors:
             data = sensor.get_reading()
-            req.post(reading_url, json=data, timeout=10)
+            res = req.post(reading_url, json=data, timeout=10)
+            if res.status_code == 200:
+                print(f"Submitted reading from sensor {sensor.sensor_id}.")
+            else:
+                print(f"Failed submitting reading from sensor{sensor.sensor_id}.")
