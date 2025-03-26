@@ -54,8 +54,8 @@ Ensure the following are installed:
 1. Create a `.env` file in the `dashboard` directory with the following credentials:
     ```ini
     DB_NAME=iot_sensors
-    DB_HOST=localhost
     DB_PORT=5432
+    DB_HOST=<YOUR_DB_HOST>
     DB_USER=<YOUR_DB_USERNAME>
     DB_PASSWORD=<YOUR_DB_PASSWORD>
     ```
