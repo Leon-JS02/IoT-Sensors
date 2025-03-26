@@ -26,7 +26,7 @@ Ensure the following are installed:
 1. Set up the database by following the instructions in [`schema/README.md`](schema/README.md).
 2. Create a configuration file at `sensor-server/src/main/resources/database.properties` with the following details:
     ```properties
-    db.url=jdbc:postgresql://localhost/iot_sensors
+    db.url=jdbc:postgresql://<YOUR_DB_HOST>/iot_sensors
     db.user=<YOUR_DB_USERNAME>
     db.password=<YOUR_DB_PASSWORD>
     ```
