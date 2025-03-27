@@ -4,7 +4,7 @@
 This project sets up a complete IoT pipeline to produce, collect, store, and visualise sensor data from connected IoT devices.
 
 ## Project Structure
-The repository is organized as follows:
+The repository is organised as follows:
 
 - **`IoT-Sensors/sensor-server`**: Java-based HTTP server that collects sensor readings and stores them in a PostgreSQL database.
 - **`IoT-Sensors/schema`**: Database schema definitions for PostgreSQL, used to store sensor data.
