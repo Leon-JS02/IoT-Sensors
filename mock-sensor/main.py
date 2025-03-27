@@ -16,6 +16,8 @@ def collect_args() -> Namespace:
                         help="The number of sensors to simulate.", default=3)
     parser.add_argument("-pe", "--periodicity", type=int,
                         help="The number of seconds between readings", default=5)
+    parser.add_argument("-vt", "--volatility", type=float,
+                        help="The percentage of the maximum change between sensor readings", default=20.0)
 
     return parser.parse_args()
 
@@ -38,7 +40,7 @@ if __name__ == "__main__":
     sensor_ids = Sensor.generate_sensor_ids(args.number_sensors)
     sensor_types = Sensor.generate_sensor_types(args.number_sensors)
     sensor_arr = [
-        SENSOR_CLASSES[sensor_types[idx]](sensor_ids[idx])
+        SENSOR_CLASSES[sensor_types[idx]](sensor_ids[idx], volatility=args.volatility)
         for idx in range(args.number_sensors)
     ]
     describe_sensor_arr(sensor_arr)

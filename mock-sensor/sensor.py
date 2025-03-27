@@ -58,18 +58,18 @@ class Sensor:
 
 
 class TemperatureSensor(Sensor):
-    def __init__(self, sensor_id: str):
-        super().__init__(sensor_id, "temperature", "celsius", -10, 50)
+    def __init__(self, sensor_id: str, volatility: float):
+        super().__init__(sensor_id, "temperature", "celsius", -10, 50, volatility=volatility)
 
 
 class HumiditySensor(Sensor):
-    def __init__(self, sensor_id: str):
-        super().__init__(sensor_id, "humidity", "percent", 0, 100)
+    def __init__(self, sensor_id: str, volatility: float):
+        super().__init__(sensor_id, "humidity", "percent", 0, 100, volatility=volatility)
 
 
 class LightSensor(Sensor):
-    def __init__(self, sensor_id: str):
-        super().__init__(sensor_id, "light", "lux", 0, 10000)
+    def __init__(self, sensor_id: str, volatility: float):
+        super().__init__(sensor_id, "light", "lux", 0, 10000, volatility=volatility)
 
 
 SENSOR_CLASSES = {
