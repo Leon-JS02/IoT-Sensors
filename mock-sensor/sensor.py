@@ -22,6 +22,7 @@ class Sensor:
         self.unit = unit
         self.min_val = min_val
         self.max_val = max_val
+        self.previous_reading = (self.min_val + self.max_val) / 2
         self.last_read = datetime.now().isoformat()
 
     def __str__(self) -> str:
@@ -30,7 +31,8 @@ class Sensor:
         ID: {self.sensor_id}
         TYPE: {self.sensor_type}
         UNITS: {self.unit}
-        LAST_READ: {self.last_read}
+        LAST_READING: {self.previous_reading}
+        LAST_READ_AT: {self.last_read}
         """
 
     def get_reading(self) -> dict:
@@ -46,7 +48,11 @@ class Sensor:
 
     def generate_reading_value(self) -> float:
         """Placeholder for generating sensor-specific readings."""
-        return uniform(self.min_val, self.max_val)
+        variation = self.previous_reading * 0.05
+        new_value = uniform(self.previous_reading - variation, self.previous_reading + variation)
+        new_value = max(self.min_val, min(self.max_val, new_value))
+        self.previous_reading = new_value
+        return new_value
 
 
 class TemperatureSensor(Sensor):
