@@ -10,7 +10,7 @@ The repository is organised as follows:
 - **`IoT-Sensors/schema`**: Database schema definitions for PostgreSQL, used to store sensor data.
 - **`IoT-Sensors/mock-sensor`**: A CLI tool to generate and send simulated sensor readings, useful for testing.
 - **`IoT-Sensors/iot-sensor`**: Firmware for Arduino/ESP32-based sensors, responsible for collecting and transmitting readings.
-- **`dashboard`**: A Streamlit-based web dashboard to visualize sensor data.
+- **`dashboard`**: A Streamlit-based web dashboard to visualise sensor data.
 
 ---
 
