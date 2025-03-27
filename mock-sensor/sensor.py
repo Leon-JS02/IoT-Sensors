@@ -16,7 +16,7 @@ class Sensor:
         return [choice(list(SENSOR_CLASSES.keys())) for _ in range(n)]
 
     def __init__(self, sensor_id: str, sensor_type: str,
-                 unit: str, min_val: float, max_val: float):
+                 unit: str, min_val: float, max_val: float, volatility: float = 20.0):
         self.sensor_id = sensor_id
         self.sensor_type = sensor_type
         self.unit = unit
@@ -24,6 +24,7 @@ class Sensor:
         self.max_val = max_val
         self.previous_reading = (self.min_val + self.max_val) / 2
         self.last_read = datetime.now().isoformat()
+        self.volatility = volatility
 
     def __str__(self) -> str:
         return f"""
@@ -33,6 +34,7 @@ class Sensor:
         UNITS: {self.unit}
         LAST_READING: {self.previous_reading}
         LAST_READ_AT: {self.last_read}
+        VOLATILITY: {self.volatility}%
         """
 
     def get_reading(self) -> dict:
@@ -48,7 +50,7 @@ class Sensor:
 
     def generate_reading_value(self) -> float:
         """Placeholder for generating sensor-specific readings."""
-        variation = self.previous_reading * 0.05
+        variation = self.previous_reading * (self.volatility / 100)
         new_value = uniform(self.previous_reading - variation, self.previous_reading + variation)
         new_value = max(self.min_val, min(self.max_val, new_value))
         self.previous_reading = new_value
